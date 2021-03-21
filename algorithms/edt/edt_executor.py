@@ -26,4 +26,4 @@ def run_edt(x, y, header):
     accuracy, root = check_accuracy(tree, 5, x, y)
     print(f'EDT Accuracy: {100 * accuracy:.3f}%\n')
 
-    tree.show(root, header=header)
+    # tree.show(root, header=header)
