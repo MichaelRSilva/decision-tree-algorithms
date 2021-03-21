@@ -3,19 +3,23 @@ from algorithms.brute.brute_tree_util import build_tree, print_min_tree
 from utils.collection_util import get_data_permutations
 from config import algorithm_config
 from utils.dataset_util import split
+import numpy as np
 
 
 def run_brute(x, header):
     value_true = algorithm_config["brute"]["value_true"]
     value_false = algorithm_config["brute"]["value_false"]
-    max_cols = 8
-    max_data = 50
+    max_cols = algorithm_config["brute"]["max_cols"]
+    max_data = algorithm_config["brute"]["max_data"]
 
+    target = (x[:, -1])[:max_data]
     x = x[:, :max_cols][:max_data]
-    header = header[:max_cols]
-    index_results = len(header) - 1
+    x = (np.c_[x, target]).tolist()
 
-    permutations = get_data_permutations(x, header)
+    h = header[:max_cols]
+    h.append(header[-1])
+    index_results = len(h) - 1
+    permutations = get_data_permutations(x, h)
     dataset = permutations[0]
     metas = permutations[1]
 

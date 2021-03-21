@@ -6,7 +6,9 @@ algorithm_config = {
     },
     "brute": {
         "value_true": 11,
-        "value_false": 10
+        "value_false": 10,
+        "max_cols": 8,
+        "max_data": 500
     }
 }
 landing_club_config = {
