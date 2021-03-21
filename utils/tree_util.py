@@ -33,7 +33,8 @@ def check_accuracy(
         model,
         k: int,
         x: np.ndarray,
-        y: np.ndarray
+        y: np.ndarray,
+        header=None
 ):
     total_accuracy = 0.0
     root = None
@@ -47,8 +48,13 @@ def check_accuracy(
         x_train = np.vstack([batch for j, batch in enumerate(x_batches) if j != i])
         y_train = np.hstack([batch for j, batch in enumerate(y_batches) if j != i])
 
-        model.fit(x_train, y_train)
-        accuracy = 1 - model.eval(x_test, y_test)
+        if header is not None:
+            model.fit(x_train, y_train, h=header)
+            accuracy = 1 - model.eval(x_test, y_test, header)
+        else:
+            model.fit(x_train, y_train)
+            accuracy = 1 - model.eval(x_test, y_test)
+
         total_accuracy += accuracy
         root = model.root if hasattr(model, 'root') else None
 

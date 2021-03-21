@@ -5,9 +5,10 @@ class GadId3Classifier:
     def fit(self, input, output):
         data = input.copy()
         data[output.name] = output
+
         self.tree = self.decision_tree(data, data, input.columns, output.name)
 
-    def predict(self, input):
+    def eval(self, input):
         # convert input data into a dictionary of samples
         samples = input.to_dict(orient='records')
         predictions = []

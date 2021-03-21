@@ -5,25 +5,23 @@ from sklearn.metrics import accuracy_score
 from algorithms.id3.ID3 import GadId3Classifier
 
 
-# TODO: get data from read_data()
-# TODO: use check_accuracy from util_tree
-def run_id3(x, y, h):
-    df = pd.DataFrame(np.c_[x, y])
+def run_id3(a, b, h):
+    df = pd.DataFrame(np.c_[a, b])
     df.columns = h
     target = h[-1]
 
     # organize data into input and outputs
     x = df.drop(columns=target)
     y = df[target]
-
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33)
+
 
     # initialize and fit model
     model = GadId3Classifier()
     model.fit(x_train, y_train)
 
     # return accuracy score
-    y_pred = model.predict(x_test)
+    y_pred = model.eval(x_test)
     print(f'ID3 Accuracy: {accuracy_score(y_test, y_pred) * 100:.3f}%')
 
 
