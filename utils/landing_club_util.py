@@ -37,7 +37,7 @@ def get_header() -> np.array:
 
 def create_csv():
     header = get_header()
-    df = pd.read_csv(config.landing_club_config["from_dataset_path"], header=1)
+    df = pd.read_csv(config.landing_club_config["from_dataset_path"], header=1, dtype='unicode')
     df.columns = header
 
     df['term_greater_36'] = df['term'].apply(lambda val: get_gt(val, 36))
@@ -54,4 +54,4 @@ def create_csv():
     df['is_debt_consolidation'] = df['purpose'].apply(lambda val: 11 if 'debt_consolidation' == val else 10)
     df['is_home_improvement'] = df['purpose'].apply(lambda val: 11 if 'home_improvement' == val else 10)
 
-    df.to_csv(path_or_buf=config.landing_club_config["to_dataset_path"], columns=__columns)
+    df.to_csv(path_or_buf=config.landing_club_config["to_dataset_path"], columns=__columns, index=False)
