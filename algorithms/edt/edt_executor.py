@@ -1,6 +1,6 @@
 from algorithms.edt.EDT import EDT
 from utils.input_util import read_data
-from utils.tree_util import print_tree, check_accuracy
+from utils.tree_util import check_accuracy
 import random
 import numpy as np
 
@@ -27,4 +27,4 @@ def run_edt():
     accuracy, root = check_accuracy(tree, 5, x, y)
     print(f'EDT Accuracy: {100 * accuracy:.3f}%\n')
 
-    print_tree(tree.root, "child_yes", "child_no", "label", "attribute", header)
+    tree.show(root, header=header)

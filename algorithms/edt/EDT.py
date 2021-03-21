@@ -223,3 +223,30 @@ class EDT:
         error_factor = 0.99 * self.eval_from_node(root, x, y)
         height_factor = 0.01 * root.height() / self.target_height
         return error_factor + height_factor
+
+    def show(self, node, header: np.array, is_root=True):
+        if node is not None:
+            if is_root:
+                lines, *_ = self.show(node, header, False)
+                for line in lines:
+                    print(line)
+            else:
+                if (node is not None) and getattr(node, "child_no") is None and getattr(node, "child_yes") is None:
+                    line = '%s' % "[" + header[-1] + " = " + str(getattr(node, "label")) + "]"
+                    width = len(line)
+                    height = 1
+                    middle = width // 2
+                    return [line], width, height, middle
+                left, n, p, x = self.show(getattr(node, "child_no"), header, False)
+                right, m, q, y = self.show(getattr(node, "child_yes"), header, False)
+                s = '%s' % header[int(getattr(node, "attribute"))]
+                u = len(s)
+                first_line = (x + 1) * ' ' + (n - x - 1) * '_' + s + y * '_' + (m - y) * ' '
+                second_line = x * ' ' + '0' + (n - x - 1 + u + y) * ' ' + '1' + (m - y - 1) * ' '
+                if p < q:
+                    left += [n * ' '] * (q - p)
+                elif q < p:
+                    right += [m * ' '] * (p - q)
+                zipped_lines = zip(left, right)
+                lines = [first_line, second_line] + [a + u * ' ' + b for a, b in zipped_lines]
+                return lines, n + m + u, max(p, q) + 2, n + u // 2
