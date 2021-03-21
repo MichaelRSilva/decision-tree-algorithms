@@ -7,14 +7,13 @@ from utils.tree_util import check_accuracy
 
 
 def run_cart(x: np.array, y: np.array, h: np.array):
-
     model = CartTree(
         criterion='gini',
         splitter='best'
     )
     model = model.fit(x, y)
 
-    accuracy = check_accuracy(model, 5, x, y, h)
+    accuracy, root = check_accuracy(model, 5, x, y)
     print(f'CART Accuracy: {100 * accuracy:.3f}%')
 
     fig = plt.figure(figsize=(25, 20))

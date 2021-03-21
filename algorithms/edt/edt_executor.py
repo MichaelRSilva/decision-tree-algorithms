@@ -5,11 +5,10 @@ import random
 import numpy as np
 
 
-def run_edt():
+def run_edt(x, y, header):
     random.seed(42)
     np.random.seed(42)
 
-    x, y, header = read_data()
     mi, lambda_, target_h, tournament_k, mutation_prob = 245, 75, 10, 5, 0.0325
     print(f'{mi}, {lambda_}, {target_h}, {tournament_k}, {mutation_prob:.4f}')
 

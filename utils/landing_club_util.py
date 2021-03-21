@@ -55,7 +55,3 @@ def create_csv():
     df['is_home_improvement'] = df['purpose'].apply(lambda val: 11 if 'home_improvement' == val else 10)
 
     df.to_csv(path_or_buf=config.landing_club_config["to_dataset_path"], columns=__columns)
-
-
-def get_columns() -> np.array:
-    return __columns.copy()

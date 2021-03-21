@@ -29,7 +29,6 @@ import numpy as np
 #             return lines, n + m + u, max(p, q) + 2, n + u // 2
 
 
-
 def check_accuracy(
         model,
         k: int,
@@ -51,6 +50,6 @@ def check_accuracy(
         model.fit(x_train, y_train)
         accuracy = 1 - model.eval(x_test, y_test)
         total_accuracy += accuracy
-        root = model.root
+        root = model.root if hasattr(model, 'root') else None
 
     return total_accuracy / k, root

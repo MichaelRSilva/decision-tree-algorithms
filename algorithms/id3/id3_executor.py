@@ -1,23 +1,20 @@
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-
-import config
 from algorithms.id3.ID3 import GadId3Classifier
-from utils.landing_club_util import get_columns
 
 
 # TODO: get data from read_data()
 # TODO: use check_accuracy from util_tree
-def run_id3():
-    df = pd.read_csv(config.dataset_path, header=1)
-
-    # rename known columns
-    df.columns = get_columns()
+def run_id3(x, y, h):
+    df = pd.DataFrame(np.c_[x, y])
+    df.columns = h
+    target = h[-1]
 
     # organize data into input and outputs
-    x = df.drop(columns="status")
-    y = df["status"]
+    x = df.drop(columns=target)
+    y = df[target]
 
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33)
 

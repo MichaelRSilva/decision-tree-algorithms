@@ -1,4 +1,4 @@
-dataset_path = './datasets/financial_test.csv'
+dataset_path = './datasets/current_data.csv'
 algorithm_config = {
     "cart": {
         "path_output_image": './outputs/cart_decision_tree.png',

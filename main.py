@@ -12,5 +12,5 @@ if __name__ == '__main__':
     x, y, h = read_data()
 
     # run_cart(x, y, h)
-    # run_id3()
-    run_edt()
+    # run_edt(x, y, h)
+    run_id3(x, y, h)
