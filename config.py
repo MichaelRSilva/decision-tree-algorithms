@@ -2,13 +2,15 @@ dataset_path = './datasets/landing_club.csv'
 algorithm_config = {
     "cart": {
         "path_output_image": './outputs/cart_decision_tree.png',
-        "class_names": ["NAO", "SIM"]
+        "class_names": ["NAO", "SIM"],
+        "plot": False
     },
     "brute": {
         "value_true": 11,
         "value_false": 10,
-        "max_cols": 8,
-        "max_data": 500
+        "max_cols": 5,
+        "max_data": 200,
+        "print": False
     }
 }
 landing_club_config = {
@@ -18,4 +20,9 @@ landing_club_config = {
     "false_value": 10,
     "true_label": "EM DIA",
     "false_label": "EM ATRASO"
+}
+run_config = {
+    "algorithm": "brute",
+    "recurrence": 11,
+    "create_csv": True
 }

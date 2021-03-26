@@ -15,13 +15,12 @@ def run_id3(a, b, h):
     y = df[target]
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33)
 
-
     # initialize and fit model
     model = GadId3Classifier()
     model.fit(x_train, y_train)
 
     # return accuracy score
+
     y_pred = model.eval(x_test)
-    print(f'ID3 Accuracy: {accuracy_score(y_test, y_pred) * 100:.3f}%')
-
-
+    acc = str(round(accuracy_score(y_test, y_pred) * 100, 3)).replace(".", ",")
+    print(f'\nID3 Accuracy: {acc}%')

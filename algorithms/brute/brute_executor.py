@@ -34,4 +34,5 @@ def run_brute(x, header):
         )
         trees.append(root)
 
-    print_min_tree(trees)
+    if algorithm_config["brute"]["print"]:
+        print_min_tree(trees)
