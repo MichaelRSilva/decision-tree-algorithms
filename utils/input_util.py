@@ -1,6 +1,8 @@
-import numpy as np
 import csv
 from typing import Tuple
+
+import numpy as np
+
 from config import dataset_path
 
 

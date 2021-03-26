@@ -1,8 +1,9 @@
+import random
+
+import numpy as np
 from sklearn.model_selection import train_test_split
 
 from algorithms.edt.EDT import EDT
-import random
-import numpy as np
 
 
 def run_edt(a, b, h):

@@ -1,5 +1,6 @@
 from random import choice, choices, randint, randrange, random, uniform
 from typing import List, Tuple
+
 import numpy as np
 
 from algorithms.edt.Node import Node, generate_subtree, get_nth_subnode

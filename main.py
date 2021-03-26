@@ -1,14 +1,12 @@
-import numpy as np
-import random
+from datetime import datetime
 
-from config import run_config
 from algorithms.brute.brute_executor import run_brute
 from algorithms.cart.cart_executor import run_cart
 from algorithms.edt.edt_executor import run_edt
 from algorithms.id3.id3_executor import run_id3
+from config import run_config
 from utils.input_util import read_data
 from utils.landing_club_util import create_csv
-from datetime import datetime
 
 if __name__ == '__main__':
 

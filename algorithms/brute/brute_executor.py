@@ -1,9 +1,10 @@
+import numpy as np
+
 from algorithms.brute.BruteNode import BruteNode
 from algorithms.brute.brute_tree_util import build_tree, print_min_tree
-from utils.collection_util import get_data_permutations
 from config import algorithm_config
+from utils.collection_util import get_data_permutations
 from utils.dataset_util import split
-import numpy as np
 
 
 def run_brute(x, header):
